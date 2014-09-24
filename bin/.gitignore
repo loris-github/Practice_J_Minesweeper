@@ -1,3 +1,10 @@
 /GameScene.class
 /SmallBox.class
 /Think.class
+/CurrentArea.class
+/MineField.class
+/SmallBox$dig.class
+/CurrentArea$dig.class
+/MineField$dig.class
+/MineField$Sweeper.class
+/otherway1/

@@ -1,3 +1,4 @@
+package otherway1;
 
 import java.awt.Color;
 import java.awt.Frame;
@@ -26,8 +27,8 @@ public class GameScene extends Frame {
 				c.add(sbs[i][j]);	
 			}
 		}
-		
-		public int countMine(SmallBox[][] sbs){
+/*		
+		int countMine(SmallBox[][] sbs){
 			SmallBox[][] sbx = sbs;
 			int count = 0;
 			int minX = 0;
@@ -44,7 +45,7 @@ public class GameScene extends Frame {
 			
 			return count;
 		}
-		
+	*/	
 		// 放置雷，随机，指定个数
 		
 		//生成BButton显示
