@@ -1,10 +1,9 @@
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.Font;
 
+import javax.swing.JButton;
 
-public class CurrentArea extends Button{
+public class CurrentArea extends JButton{
 	
 	boolean dug = false;
 	int state = 0;
@@ -26,9 +25,10 @@ public class CurrentArea extends Button{
 	}
 
 	CurrentArea(){
-		setSize(20, 20);
-		setBackground(Color.DARK_GRAY);
-		setForeground(Color.yellow);
+		setFont(getFont());
+		setSize(30, 30);
+		//setBackground(Color.DARK_GRAY);
+		setForeground(Color.red);
 		//tButton.addMouseListener(new dig(this));
 		setVisible(true);
 	}
