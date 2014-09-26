@@ -5,9 +5,37 @@ import javax.swing.JButton;
 
 public class CurrentArea extends JButton{
 	
-	boolean dug = false;
-	int state = 0;
+	private boolean dug = false;
+	private int state = 0;
+	private int vx = 0;
+	private int vy = 0;
+	private int mark = 0;
 	
+	
+	public int getMark() {
+		return mark;
+	}
+
+	public void setMark(int mark) {
+		this.mark = mark;
+	}
+
+	public int getVx() {
+		return vx;
+	}
+
+	public void setVx(int vx) {
+		this.vx = vx;
+	}
+
+	public int getVy() {
+		return vy;
+	}
+
+	public void setVy(int vy) {
+		this.vy = vy;
+	}
+
 	public boolean isDug() {
 		return dug;
 	}
