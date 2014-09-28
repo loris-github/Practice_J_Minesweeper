@@ -181,7 +181,7 @@ public class MineField extends JFrame {
 	
 	private void checkWin(){
 		unknowArea--;
-		if (unknowArea <= 0) {
+		if (unknowArea == 0) {
 			win();
 		}else
 			return;
