@@ -84,12 +84,15 @@ public class MineField extends JFrame {
 		}
 
 		//初始化地雷，并放入mineArray，并初始化unknowArea
-		for (int i = 0;i<=mineNum;i++){
+		for (int i = 0;i<mineNum;i++){ // 小于等于号导致多布一颗雷
 			
 			int x = random.nextInt(GS_ROWS-1);
 			int y = random.nextInt(GS_ROWS-1);
 			
-			if(cas[x][y].getState()==9) continue;
+			if(cas[x][y].getState()==9) {
+				i-- ; //没有此处 导致判断胜利错误
+				continue;	
+			}
 			
 			else 
 				cas[x][y].setState(9);
