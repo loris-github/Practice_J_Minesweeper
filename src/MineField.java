@@ -7,37 +7,34 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-import javax.swing.JFrame;
 
-public class MineField extends JFrame {
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class MineField extends JPanel {
 	
-	public static int GS_ROWS = 10; 
-	public static int GS_COLS = 10; 
-	public static int GS_HGAP = 1; 
-	public static int GS_VGAP = 1; 
-	public static int mineNum = 20;
+	private int ROWS = 10; 
+	private int COLS = 10; 
+	private int HGAP = 1; 
+	private int VGAP = 1; 
+	private int mineNum = 20;
+	
 	private CurrentArea[][] cas = null;
 	private ArrayList<CurrentArea> minesArray = new ArrayList<CurrentArea>();
 	private int  unknowArea = 0;
 
-	MineField(){
-		setBackground(Color.black);
-		setSize(800,800);
-		setLocation(800,200);
-		setLayout(new GridLayout(GS_ROWS,GS_COLS,GS_HGAP,GS_VGAP));		
-		cas = new CurrentArea[GS_ROWS][GS_COLS];
-		setMine(10);
-		//testSetMine();
+	MineField(int ROWS,int COLS,int mineNum){
+		this.ROWS = ROWS;
+		this.COLS = COLS;
+		this.mineNum = mineNum;
+		
+		setLayout(new GridLayout(this.ROWS,this.COLS,this.HGAP,this.VGAP));		
+		cas = new CurrentArea[this.ROWS][this.COLS];
+		setMine(this.mineNum);
 		//pack();
-		setVisible(true);
-		this.addWindowListener(new WindowAdapter(){
-			public void windowClosing(WindowEvent e){
-				System.exit(0);
-			}
-		  });
-		}
+	}
 
-	private class AroundInfo {		
+	private class AroundInfo {	
 		CurrentArea ca = null;
 		ArrayList<CurrentArea> neighbourArray = null;
 		int flags = 0;
@@ -68,7 +65,7 @@ public class MineField extends JFrame {
 	}
 	
 	private void setMine(int mineNum){
-		unknowArea = GS_ROWS * GS_COLS - mineNum;
+		unknowArea = this.ROWS * this.COLS - mineNum;
 		Random random = new Random();
 		int count = 0;
 		
@@ -86,8 +83,8 @@ public class MineField extends JFrame {
 		//初始化地雷，并放入mineArray，并初始化unknowArea
 		for (int i = 0;i<mineNum;i++){ // 小于等于号导致多布一颗雷
 			
-			int x = random.nextInt(GS_ROWS-1);
-			int y = random.nextInt(GS_ROWS-1);
+			int x = random.nextInt(this.ROWS-1);
+			int y = random.nextInt(this.ROWS-1);
 			
 			if(cas[x][y].getState()==9) {
 				i-- ; //没有此处 导致判断胜利错误
@@ -143,7 +140,7 @@ public class MineField extends JFrame {
 			case 9 : {
 				ca.setForeground(new Color(0,0,0));
 				ca.setBackground(Color.RED);
-				ca.setText("Boom");
+				ca.setText("B");
 				break;
 			}			
 		}
@@ -158,7 +155,7 @@ public class MineField extends JFrame {
 			break;
 			case 1 : {
 				ca.setForeground(new Color(128,128,128));
-				ca.setText("Flag");
+				ca.setText("F");
 			}
 			break;
 			case 2 :{
@@ -247,10 +244,4 @@ public class MineField extends JFrame {
 			} 
 		} 
 	}
-	
-	public static void main(String[] args) {
-		new MineField();
-
-	}
-
 }
